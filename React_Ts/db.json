@@ -1,0 +1,39 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Product A",
+        "price": 11000
+      },
+      {
+        "id": 3,
+        "name": "Product CDDD",
+        "price": 11000
+      },
+      {
+        "id": 2,
+        "name": "Product B",
+        "price": 11000
+      },
+      {
+        "id": 4,
+        "name": "Product F",
+        "price": 11000
+      },
+      {
+        "id": 6,
+        "name": "Product G",
+        "price": 11000
+      },
+      {
+        "name": "asbcfajsc",
+        "price": "325423",
+        "id": 8
+      },
+      {
+        "name": "dukashh",
+        "price": "32523",
+        "id": 9
+      }
+    ]
+  }
