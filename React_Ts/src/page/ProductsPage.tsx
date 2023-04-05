@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Space, Table, Tag } from 'antd';
+import React from 'react'
+import { Button, Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { IProps } from '../interface/interface';
 import { Link } from 'react-router-dom';
@@ -58,16 +58,16 @@ const ProductsPage = (props: IProps) => {
     {
       title: 'Action',
       key: 'action',
-      render: (text,record) => (
+      render: (record) => (
         <Space size="middle">
-          <Button>Detail</Button>
+          <Button><Link to={`/products/${record.key}`}>Detail</Link></Button>
         </Space>
       ),
     },
   ];
 
   return (
-    <Table columns={columns} dataSource={data} />
+    <Table columns={columns} dataSource={data} pagination={{ pageSize: 5 }} />
   )
 }
 
