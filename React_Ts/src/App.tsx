@@ -40,7 +40,7 @@ function App() {
 
           <Route path='addProduct' element={< AddProduct />} />
           <Route path='products'>
-            <Route index element={<ProductsManagement />} />
+            <Route index element={<ProductsManagement  products={products}/>} />
             <Route path=':id/update' element={<UpdateProduct />} />
           </Route>
 
