@@ -5,3 +5,4 @@ react
 react-router-dom
 axios
 antd
+@ant-design/icons

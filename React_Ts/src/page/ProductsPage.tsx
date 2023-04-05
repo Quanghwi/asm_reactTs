@@ -1,8 +1,73 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Button, Space, Table, Tag } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
+import { IProps } from '../interface/interface';
+import { Link } from 'react-router-dom';
 
-const ProductsPage = () => {
+interface DataType {
+  key: string | number;
+  name: string;
+  price: number;
+  image: string,
+  description: string,
+  idCate: number
+}
+
+const ProductsPage = (props: IProps) => {
+
+  const data: DataType[] = props.products.map(item => {
+    return {
+      key: item.id,
+      name: item.name,
+      price: item.price,
+      image: item.image,
+      description: item.description,
+      idCate: item.idCate
+    }
+  })
+
+  const columns: ColumnsType<DataType> = [
+    {
+      title: 'STT',
+      dataIndex: 'stt',
+      key: 'stt',
+      render: (text, record, index) => index + 1
+    },
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: 'Price',
+      dataIndex: 'price',
+      key: 'price',
+    },
+    {
+      title: 'Image',
+      dataIndex: 'image',
+      key: 'image',
+      render: (Image) => <img style={{ width: '200px' }} src={Image} alt="" />
+    },
+    {
+      title: 'Description',
+      dataIndex: 'description',
+      key: 'description',
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (text,record) => (
+        <Space size="middle">
+          <Button>Detail</Button>
+        </Space>
+      ),
+    },
+  ];
+
   return (
-    <div>ProductsPage</div>
+    <Table columns={columns} dataSource={data} />
   )
 }
 
