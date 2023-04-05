@@ -57,7 +57,9 @@ const AdminLayout = () => {
     <Layout style={{ minHeight: '100vh' }}>
 
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-        <div style={{ height: 32, margin: 16, background: 'rgba(255, 255, 255, 0.2)' }} />
+        <div style={{ height: 32, margin: 16, background: 'rgba(255, 255, 255, 0.2)' }}>
+        <h3 style={{color:'white',paddingTop:'3px',paddingLeft:'10px'}}>Administrator</h3>
+        </div>
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
       </Sider>
 
@@ -66,11 +68,11 @@ const AdminLayout = () => {
         <Header style={{ padding: 2, background: colorBgContainer }}>
           <Row justify="space-around" align="middle">
             <Col span={12}>
-              <Search style={{ width: '100%',maxWidth:'600px',display:'block',marginLeft:'40px' }} placeholder="input search text" onSearch={onSearch} enterButton />
+              <Search style={{ width: '100%', maxWidth: '600px', display: 'block', marginLeft: '40px' }} placeholder="input search text" onSearch={onSearch} enterButton />
             </Col>
             <Col span={4}>
               <div>
-                <Avatar style={{marginRight:'10px'}} size="large" icon={<UserOutlined />}></Avatar>Đặng Quang Huy
+                <Avatar style={{ marginRight: '10px' }} size="large" icon={<UserOutlined />}></Avatar>Đặng Quang Huy
               </div>
 
             </Col>
