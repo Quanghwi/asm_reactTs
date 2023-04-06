@@ -71,6 +71,13 @@
       "image": "./haihuocmotchut.png",
       "description": "Hài Hước Một Chút Thế Giới Sẽ Khác Đi",
       "idCate": 1
+    },
+    {
+      "name": "uygwfiwheoif",
+      "price": "1110000",
+      "description": "okok",
+      "idCate": "2",
+      "id": 10
     }
   ],
   "category": [
