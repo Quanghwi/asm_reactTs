@@ -2,17 +2,17 @@
   "products": [
     {
       "id": 1,
-      "name": "Một ngày bằng 48 giờ",
-      "price": 11000,
       "image": "./1ngaybang48h.jpg",
-      "description": "Một ngày bằng 48 giờ ",
-      "idCate": 1
+      "name": "Một ngày bằng 48 giờ ?",
+      "price": "11000",
+      "description": "12",
+      "idCate": "1"
     },
     {
       "id": 2,
+      "image": "./5phut.jpg",
       "name": "5 Phút Tự Rèn Luyện Tính Kỉ Luật",
       "price": 11000,
-      "image": "./5phut.jpg",
       "description": "5 Phút Tự Rèn Luyện Tính Kỉ Luật",
       "idCate": 1
     },

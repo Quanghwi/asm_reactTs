@@ -8,6 +8,7 @@ import { IProduct } from '../../../interface/interface';
 interface IProps{
   onAdd:(product:IProduct) =>void
 }
+
 const AddProduct = (props:IProps) => {
 
   const navigate = useNavigate()

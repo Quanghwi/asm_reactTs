@@ -6,7 +6,7 @@ import AdminLayout from './page/layout/AdminLayout'
 import Dashboard from './page/admin/Dashboard'
 import ProductsManagement from './page/admin/Products/ProductsManagement'
 import ProductsPage from './page/ProductsPage'
-import { addProduct, deleteProduct, getAll } from './api/product'
+import { addProduct, deleteProduct, getAll, updateProduct } from './api/product'
 import ProductDetail from './page/ProductDetail'
 import AddProduct from './page/admin/Products/AddProduct'
 import UpdateProduct from './page/admin/Products/UpdateProduct'
@@ -35,6 +35,10 @@ function App() {
     addProduct(product).then(() => getAll().then(({ data }) => setProducts(data)))
   }
 
+  const onHandleUpdate = (product: IProduct) => {
+    updateProduct(product)
+  }
+
   return (
     <div className="App">
       <Routes>
@@ -49,10 +53,10 @@ function App() {
         <Route path='/admin' element={< AdminLayout />}>
           <Route index element={< Dashboard />} />
 
-          <Route path='addProduct' element={< AddProduct onAdd={onHandleAdd}/>} />
+          <Route path='addProduct' element={< AddProduct onAdd={onHandleAdd} />} />
           <Route path='products'>
             <Route index element={<ProductsManagement products={products} onRemove={onHandleRemove} />} />
-            <Route path=':id/update' element={<UpdateProduct />} />
+            <Route path=':id/update' element={<UpdateProduct products={products} onUpdate={onHandleUpdate} />} />
           </Route>
 
           <Route path='addCategory' element={<AddCategory />} />
@@ -60,7 +64,9 @@ function App() {
             <Route index element={<CategoryManagement />} />
             <Route path=':id/update' element={<UpdateCategory />} />
           </Route>
+
           <Route path='users' element={<Users />} />
+
         </Route>
       </Routes>
     </div>

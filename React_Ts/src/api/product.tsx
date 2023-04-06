@@ -7,14 +7,14 @@ const getAll = () => {
 const getOne = (id: number) => {
     return instance.get('/products' + id)
 }
-const addProduct = (product:IProduct) => {
+const addProduct = (product: IProduct) => {
     return instance.post('/products', product)
 }
 const deleteProduct = (id: number) => {
     return instance.delete('/products/' + id)
 }
-const updateProduct = (product:IProduct) => {
-    return instance.put('/products/' + product.id, product)
+const updateProduct = (product: IProduct) => {
+    return instance.patch('/products/' + product.id, product)
 }
 
-export {getAll,getOne,addProduct,deleteProduct,updateProduct}
+export { getAll, getOne, addProduct, deleteProduct, updateProduct }

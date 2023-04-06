@@ -17,9 +17,9 @@ interface IProp extends IProps {
   onRemove: (id: number) => void
 }
 
-const ProductsManagement = (props:IProp) => {
+const ProductsManagement = (props: IProp) => {
 
-  const removeProduct = (id:number) => {
+  const removeProduct = (id: number) => {
     props.onRemove(id)
   }
 
@@ -62,7 +62,7 @@ const ProductsManagement = (props:IProp) => {
       key: 'action',
       render: (record) => (
         <Space size="middle">
-          <Button style={{ backgroundColor: 'blue' }}><Link style={{ color: 'white' }} to={`/${record.key}/update`}>Update</Link></Button>
+          <Button style={{ backgroundColor: 'blue' }}><Link style={{ color: 'white' }} to={`${record.key}/update`}>Update</Link></Button>
           <Button style={{ backgroundColor: 'red', color: 'white' }} onClick={() => removeProduct(record.key)}>Remove</Button>
         </Space>
       ),
