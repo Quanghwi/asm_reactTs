@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { Link } from 'react-router-dom';
-import { IProps } from '../../../interface/interface';
+import { IProduct, IProps } from '../../../interface/interface';
 
 interface DataType {
   key: string | number;
@@ -12,7 +12,16 @@ interface DataType {
   idCate: number
 }
 
-const ProductsManagement = (props: IProps) => {
+interface IProp extends IProps {
+  products: IProduct[],
+  onRemove: (id: number) => void
+}
+
+const ProductsManagement = (props:IProp) => {
+
+  const removeProduct = (id:number) => {
+    props.onRemove(id)
+  }
 
   const data: DataType[] = props.products.map(item => {
     return {
@@ -53,8 +62,8 @@ const ProductsManagement = (props: IProps) => {
       key: 'action',
       render: (record) => (
         <Space size="middle">
-          <Button style={{ backgroundColor: 'blue' }}><Link style={{ color: 'white' }} to={`/${record.key}`}>Update</Link></Button>
-          <Button style={{ backgroundColor: 'red' }}><Link style={{ color: 'white' }} to={`/${record.key}`}>Remove</Link></Button>
+          <Button style={{ backgroundColor: 'blue' }}><Link style={{ color: 'white' }} to={`/${record.key}/update`}>Update</Link></Button>
+          <Button style={{ backgroundColor: 'red', color: 'white' }} onClick={() => removeProduct(record.key)}>Remove</Button>
         </Space>
       ),
     },

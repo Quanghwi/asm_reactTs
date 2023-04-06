@@ -6,7 +6,7 @@ import AdminLayout from './page/layout/AdminLayout'
 import Dashboard from './page/admin/Dashboard'
 import ProductsManagement from './page/admin/Products/ProductsManagement'
 import ProductsPage from './page/ProductsPage'
-import { getAll } from './api/product'
+import { addProduct, deleteProduct, getAll } from './api/product'
 import ProductDetail from './page/ProductDetail'
 import AddProduct from './page/admin/Products/AddProduct'
 import UpdateProduct from './page/admin/Products/UpdateProduct'
@@ -14,15 +14,26 @@ import AddCategory from './page/admin/Category/AddCategory'
 import CategoryManagement from './page/admin/Category/CategoryManagement'
 import UpdateCategory from './page/admin/Category/UpdateCategory'
 import Users from './page/admin/Users/Users'
+import { IProduct } from './interface/interface'
 
 
 function App() {
-  const [products, setProduct] = useState([])
+  const [products, setProducts] = useState<IProduct[]>([])
 
   useEffect(() => {
-    getAll().then(({ data }) => setProduct(data))
+    getAll().then(({ data }) => setProducts(data))
     console.log(products);
   }, [])
+
+  const onHandleRemove = (id: number) => {
+    deleteProduct(id).then(() => {
+      setProducts(products.filter((item: IProduct) => item.id !== id))
+    })
+  }
+
+  const onHandleAdd = (product: IProduct) => {
+    addProduct(product).then(() => getAll().then(({ data }) => setProducts(data)))
+  }
 
   return (
     <div className="App">
@@ -38,9 +49,9 @@ function App() {
         <Route path='/admin' element={< AdminLayout />}>
           <Route index element={< Dashboard />} />
 
-          <Route path='addProduct' element={< AddProduct />} />
+          <Route path='addProduct' element={< AddProduct onAdd={onHandleAdd}/>} />
           <Route path='products'>
-            <Route index element={<ProductsManagement  products={products}/>} />
+            <Route index element={<ProductsManagement products={products} onRemove={onHandleRemove} />} />
             <Route path=':id/update' element={<UpdateProduct />} />
           </Route>
 
@@ -49,7 +60,7 @@ function App() {
             <Route index element={<CategoryManagement />} />
             <Route path=':id/update' element={<UpdateCategory />} />
           </Route>
-          <Route path='users' element={<Users/>}/>
+          <Route path='users' element={<Users />} />
         </Route>
       </Routes>
     </div>

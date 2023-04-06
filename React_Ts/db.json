@@ -71,6 +71,20 @@
       "image": "./haihuocmotchut.png",
       "description": "Hài Hước Một Chút Thế Giới Sẽ Khác Đi",
       "idCate": 1
+    },
+    {
+      "name": "products 13",
+      "price": "346455",
+      "description": "sản phẩm chất lượng",
+      "idCate": "1",
+      "id": 10
+    },
+    {
+      "name": "producs 14",
+      "price": "2467890987654",
+      "description": "gytfdssdfgreg",
+      "idCate": "2",
+      "id": 11
     }
   ],
   "category": [

@@ -5,10 +5,10 @@ const getAll = () => {
     return instance.get('/products')
 }
 const getOne = (id: number) => {
-    return instance.get('/products/' + id)
+    return instance.get('/products' + id)
 }
 const addProduct = (product:IProduct) => {
-    return instance.post('/products/', product)
+    return instance.post('/products', product)
 }
 const deleteProduct = (id: number) => {
     return instance.delete('/products/' + id)

@@ -8,5 +8,5 @@ export interface IProduct {
 }
 export interface IProps {
     products: IProduct[],
-    // onRemove: (id: number) => void
+    onRemove?: (id: number) => void
 }
