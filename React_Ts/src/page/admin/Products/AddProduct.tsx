@@ -3,23 +3,27 @@ import { Button, Card, Form, Upload, Select } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Col, Row, Input } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-import { IProduct } from '../../../interface/interface';
+import { ICategory, IProduct } from '../../../interface/interface';
 
-interface IProps{
-  onAdd:(product:IProduct) =>void
+interface IProps {
+  onAdd: (product: IProduct) => void
 }
-
-const AddProduct = (props:IProps) => {
+interface DataType {
+  value: string | number,
+  label: string
+}
+interface IProps {
+  categories: ICategory[],
+}
+const AddProduct = (props: IProps) => {
 
   const navigate = useNavigate()
 
   const onFinish = (values: any) => {
     props.onAdd(values)
     navigate('/admin/products')
-    window.location.reload()
+    // window.location.reload()
   };
-
-
   const onChange = (value: string) => {
     console.log(`selected ${value}`);
   };
@@ -27,6 +31,15 @@ const AddProduct = (props:IProps) => {
   const onSearch = (value: string) => {
     console.log('search:', value);
   };
+  const data: DataType[] = props.categories.map((item) => {
+    return {
+      // key: item.id,
+      // name: item.cateName
+      value: item.id,
+      label: item.cateName
+    }
+  })
+  console.log(data);
 
   return (
     <div>
@@ -92,16 +105,9 @@ const AddProduct = (props:IProps) => {
                   filterOption={(input, option) =>
                     (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                   }
-                  options={[
-                    {
-                      value: '1',
-                      label: 'Sản phẩm sách',
-                    },
-                    {
-                      value: '2',
-                      label: 'Sản phẩm công nghệ',
-                    }
-                  ]}
+
+                  options={data
+                  }
                 />
               </Form.Item>
             </Col>

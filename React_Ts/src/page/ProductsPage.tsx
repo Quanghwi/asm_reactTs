@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import { IProps } from '../interface/interface';
+import { IProduct } from '../interface/interface';
 import { Link } from 'react-router-dom';
 
 interface DataType {
@@ -11,6 +11,10 @@ interface DataType {
   image: string,
   description: string,
   idCate: number
+}
+export interface IProps {
+  products: IProduct[],
+  onRemove?: (id: number) => void
 }
 
 const ProductsPage = (props: IProps) => {

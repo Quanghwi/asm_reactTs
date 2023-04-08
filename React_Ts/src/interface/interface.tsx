@@ -6,7 +6,8 @@ export interface IProduct {
     description: string,
     idCate: number
 }
-export interface IProps {
-    products: IProduct[],
-    onRemove?: (id: number) => void
+
+export interface ICategory {
+    id: number,
+    cateName: string
 }

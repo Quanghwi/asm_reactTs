@@ -5,7 +5,7 @@
       "image": "./1ngaybang48h.jpg",
       "name": "Một ngày bằng 48 giờ ?",
       "price": "11000",
-      "description": "12",
+      "description": "Một ngày bằng 48 giờ",
       "idCate": "1"
     },
     {
@@ -33,22 +33,6 @@
       "idCate": 2
     },
     {
-      "id": 6,
-      "name": "Kỉ Luật Bản Thân",
-      "price": 11000,
-      "image": "./kiluatbanthan.jpg",
-      "description": "Kỉ Luật Bản Thân",
-      "idCate": 1
-    },
-    {
-      "id": 3,
-      "name": "Apple Iphone 12",
-      "price": 11000,
-      "image": "./appleIphone12.jpg",
-      "description": "Apple Iphone 12",
-      "idCate": 2
-    },
-    {
       "id": 7,
       "name": "Kỉ Luật Là Sức Mạnh",
       "price": 11000,
@@ -73,21 +57,51 @@
       "idCate": 1
     },
     {
-      "name": "uygwfiwheoif",
-      "price": "1110000",
-      "description": "okok",
-      "idCate": "2",
-      "id": 10
-    }
-  ],
-  "category": [
-    {
+      "name": "qwertyuio",
+      "price": "11111",
+      "description": "232435",
       "idCate": 1,
-      "cate": "Sách"
+      "id": 10
     },
     {
-      "idCate": 2,
-      "cate": "Sản phẩm công nghệ"
+      "name": "ưyegfus",
+      "price": "347593",
+      "description": "sahdg",
+      "idCate": 4,
+      "id": 11
+    },
+    {
+      "name": "abcc",
+      "price": "123",
+      "description": "1234",
+      "idCate": "1",
+      "id": 12
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "cateName": "Sách"
+    },
+    {
+      "id": 2,
+      "cateName": "Sản phẩm công nghệ"
+    },
+    {
+      "id": 3,
+      "cateName": "Laptop"
+    },
+    {
+      "id": 4,
+      "cateName": "Sách"
+    },
+    {
+      "id": 5,
+      "cateName": "Sách"
+    },
+    {
+      "cateName": "Macbook",
+      "id": 7
     }
   ],
   "users": [

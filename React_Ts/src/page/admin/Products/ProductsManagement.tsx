@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { Link } from 'react-router-dom';
-import { IProduct, IProps } from '../../../interface/interface';
+import { IProduct } from '../../../interface/interface';
 
 interface DataType {
   key: string | number;
@@ -12,12 +12,12 @@ interface DataType {
   idCate: number
 }
 
-interface IProp extends IProps {
+interface IProps {
   products: IProduct[],
   onRemove: (id: number) => void
 }
 
-const ProductsManagement = (props: IProp) => {
+const ProductsManagement = (props: IProps) => {
 
   const removeProduct = (id: number) => {
     props.onRemove(id)
@@ -32,6 +32,8 @@ const ProductsManagement = (props: IProp) => {
       idCate: item.idCate
     }
   })
+  // console.log(data);
+  
 
 
   const columns: ColumnsType<DataType> = [

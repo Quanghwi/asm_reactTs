@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Button, Card, Col, Form, Image, Input, Row, Select, Upload } from 'antd';
+import { Button, Card, Col, Form, Image, Input, Row, Select } from 'antd';
 import { IProduct } from '../../../interface/interface';
-import { PlusOutlined } from '@ant-design/icons';
-import { getAll } from '../../../api/product';
+// import { PlusOutlined } from '@ant-design/icons';
+// import { getAll } from '../../../api/product';
 
 interface IProps {
   products: IProduct[],
   onUpdate: (product: IProduct) => void
 }
-
-
 
 const UpdateProductPage = (props: IProps) => {
   const { id } = useParams()
@@ -44,7 +42,7 @@ const UpdateProductPage = (props: IProps) => {
   const onFinish = (values: any) => {
     props.onUpdate(values);
     navigate('/admin/products')
-    window.location.reload()
+    // window.location.reload()
   };
 
   return (

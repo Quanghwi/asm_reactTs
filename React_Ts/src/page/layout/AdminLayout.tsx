@@ -8,6 +8,7 @@ import {
 import { MenuProps, Input, Avatar, Space, Row, Col } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { Link, Outlet } from "react-router-dom"
+// import ProductsManagement from '../admin/Products/ProductsManagement';
 
 const { Search } = Input;
 
@@ -39,9 +40,9 @@ const items: MenuItem[] = [
     getItem(<Link to={'/admin/addProduct'}>Add Product</Link>, '3')
   ]),
 
-  getItem(<Link to={'/admin/category'}>Category</Link>, 'sub2', <DatabaseOutlined />, [
-    getItem(<Link to={'/admin/category'}>Category Management  </Link>, '4'),
-    getItem(<Link to={'/admin/addCategory'}>Add Category</Link>, '5')
+  getItem(<Link to={'/admin/categories'}>Category</Link>, 'sub2', <DatabaseOutlined />, [
+    getItem(<Link to={'/admin/categories'}>Category Management  </Link>, '4'),
+    getItem(<Link to={'/admin/addCategories'}>Add Category</Link>, '5')
   ]),
 
   getItem(<Link to={'/admin/users'}>Users</Link>, '6', <UserOutlined />),
@@ -58,7 +59,7 @@ const AdminLayout = () => {
 
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         <div style={{ height: 32, margin: 16, background: 'rgba(255, 255, 255, 0.2)' }}>
-        <h3 style={{color:'white',paddingTop:'3px',paddingLeft:'10px'}}>Administrator</h3>
+          <h3 style={{ color: 'white', paddingTop: '3px', paddingLeft: '10px' }}>Administrator</h3>
         </div>
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
       </Sider>
