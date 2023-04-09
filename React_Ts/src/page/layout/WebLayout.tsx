@@ -30,6 +30,22 @@ const items: MenuProps['items'] = [
       },
     ],
   },
+
+  {
+    label: (
+      <Link to={'/signin'}>Đăng nhập</Link>
+    ),
+    key: 'signin',
+    style: { textAlign: 'right' }
+  },
+  {
+    label: (
+      <Link to={'/signup'}>Đăng kí</Link>
+    ),
+    key: 'signup',
+    style: { textAlign: 'right' }
+  },
+
 ];
 
 

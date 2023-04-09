@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   DatabaseOutlined,
   DesktopOutlined,
+  LogoutOutlined,
   PieChartOutlined,
   UserOutlined,
 } from '@ant-design/icons';
@@ -46,6 +47,7 @@ const items: MenuItem[] = [
   ]),
 
   getItem(<Link to={'/admin/users'}>Users</Link>, '6', <UserOutlined />),
+  getItem(<Link to={'/'}>Log Out</Link>, '7', <LogoutOutlined />),
 ];
 
 const AdminLayout = () => {

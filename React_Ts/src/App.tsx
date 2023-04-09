@@ -17,6 +17,8 @@ import { ICategory, IProduct, IUser } from './interface/interface'
 import { addCategory, deleteCategory, getAllCategory, updateCategory } from './api/category'
 import UsersManagement from './page/admin/Users/UsersManagement'
 import { getAllUsers } from './api/users'
+import Signup from './page/admin/Users/Signup'
+import Signin from './page/admin/Users/Signin'
 
 
 function App() {
@@ -71,6 +73,8 @@ function App() {
             <Route index element={< ProductsPage products={products} />} />
             <Route path=':id' element={< ProductDetail products={products} categories={categories} />} />
           </Route>
+          <Route path='signup' element={< Signup />} />
+          <Route path='signin' element={< Signin />} />
         </Route>
 
         <Route path='/admin' element={< AdminLayout />}>
