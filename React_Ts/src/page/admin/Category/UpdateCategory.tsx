@@ -15,7 +15,7 @@ const UpdateCategory = (props: IProps) => {
   const navigate = useNavigate()
   const currentCate = props.categories.find((categories: ICategory) => categories.id == Number(id))
   console.log(id);
-  
+
   const [cate, setCate] = useState<ICategory>()
   useEffect(() => {
     setCate(currentCate)
@@ -61,12 +61,10 @@ const UpdateCategory = (props: IProps) => {
 
               <Form.Item>
                 <Button type="primary" htmlType="submit" style={{ margin: '20px' }}>
-                  Thêm mới
+                  Cập nhật
                 </Button>
               </Form.Item>
-
             </Col>
-
           </Row>
         </Card>
       </Form></div>

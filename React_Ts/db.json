@@ -64,18 +64,32 @@
       "id": 10
     },
     {
-      "name": "ưyegfus",
-      "price": "347593",
-      "description": "sahdg",
-      "idCate": 4,
+      "name": "quang huy 1",
+      "price": "10000",
+      "description": "quang huy",
+      "idCate": 8,
       "id": 11
     },
     {
-      "name": "abcc",
-      "price": "123",
-      "description": "1234",
-      "idCate": "1",
+      "name": "test remove",
+      "price": "100",
+      "description": "100",
+      "idCate": 7,
       "id": 12
+    },
+    {
+      "name": "ewwfd",
+      "price": "134",
+      "description": "34",
+      "idCate": 3,
+      "id": 13
+    },
+    {
+      "name": "qưetry",
+      "price": "245",
+      "description": "sdfgdxvc",
+      "idCate": 2,
+      "id": 14
     }
   ],
   "categories": [
@@ -92,16 +106,12 @@
       "cateName": "Laptop"
     },
     {
-      "id": 4,
-      "cateName": "Sách"
-    },
-    {
-      "id": 5,
-      "cateName": "Sách"
-    },
-    {
       "cateName": "Macbook",
       "id": 7
+    },
+    {
+      "cateName": "Quang Huy",
+      "id": 8
     }
   ],
   "users": [

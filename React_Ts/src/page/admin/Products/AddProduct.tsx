@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Card, Form, Upload, Select } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Col, Row, Input } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, UploadOutlined } from '@ant-design/icons';
 import { ICategory, IProduct } from '../../../interface/interface';
+import { Modal } from 'antd';
+import type { RcFile, UploadProps } from 'antd/es/upload';
+import type { UploadFile } from 'antd/es/upload/interface';
 
 interface IProps {
   onAdd: (product: IProduct) => void
@@ -15,10 +18,43 @@ interface DataType {
 interface IProps {
   categories: ICategory[],
 }
+
+const getBase64 = (file: RcFile): Promise<string> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = (error) => reject(error);
+  });
+
 const AddProduct = (props: IProps) => {
-
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState('');
+  const [previewTitle, setPreviewTitle] = useState('');
+  const [fileList, setFileList] = useState<UploadFile[]>([])
+  
   const navigate = useNavigate()
+  const handleCancel = () => setPreviewOpen(false);
 
+  const handlePreview = async (file: UploadFile) => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj as RcFile);
+    }
+
+    setPreviewImage(file.url || (file.preview as string));
+    setPreviewOpen(true);
+    setPreviewTitle(file.name || file.url!.substring(file.url!.lastIndexOf('/') + 1));
+  };
+
+  const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) =>
+    setFileList(newFileList);
+
+  const uploadButton = (
+    <div>
+      <PlusOutlined />
+      <div style={{ marginTop: 8 }}>Upload</div>
+    </div>
+  );
   const onFinish = (values: any) => {
     props.onAdd(values)
     navigate('/admin/products')
@@ -39,7 +75,6 @@ const AddProduct = (props: IProps) => {
       label: item.cateName
     }
   })
-  console.log(data);
 
   return (
     <div>
@@ -59,12 +94,20 @@ const AddProduct = (props: IProps) => {
         >    <Row>
             <Col span={6}>
               <Form.Item label="Thêm ảnh"><br /><br />
-                <Upload action="./public" listType="picture-card" name='image'>
-                  <div>
-                    <PlusOutlined />
-                    <div style={{ marginTop: 8 }}>Upload</div>
-                  </div>
-                </Upload>
+                <>
+                  <Upload
+                    action="/public"
+                    listType="picture-card"
+                    fileList={fileList}
+                    onPreview={handlePreview}
+                    onChange={handleChange}
+                  >
+                    {fileList.length >= 8 ? null : uploadButton}
+                  </Upload>
+                  <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
+                    <img alt="example" style={{ width: '100%' }} src={previewImage} />
+                  </Modal>
+                </>
               </Form.Item>
             </Col>
             <Col span={18}>
@@ -105,9 +148,7 @@ const AddProduct = (props: IProps) => {
                   filterOption={(input, option) =>
                     (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                   }
-
-                  options={data
-                  }
+                  options={data}
                 />
               </Form.Item>
             </Col>

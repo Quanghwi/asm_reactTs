@@ -2,13 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Button, Card, Col, Form, Image, Input, Row, Select } from 'antd';
-import { IProduct } from '../../../interface/interface';
+import { ICategory, IProduct } from '../../../interface/interface';
 // import { PlusOutlined } from '@ant-design/icons';
 // import { getAll } from '../../../api/product';
 
 interface IProps {
   products: IProduct[],
-  onUpdate: (product: IProduct) => void
+  onUpdate: (product: IProduct) => void,
+  categories: ICategory[],
+}
+
+interface DataType {
+  value: string | number,
+  label: string
 }
 
 const UpdateProductPage = (props: IProps) => {
@@ -21,6 +27,13 @@ const UpdateProductPage = (props: IProps) => {
     setProduct(currentProduct)
   }, [props])
 
+  const data: DataType[] = props.categories.map((item) => {
+    return {
+      value: item.id,
+      label: item.cateName
+    }
+  })
+  console.log(data);
 
   useEffect(() => {
     setFields()
@@ -115,16 +128,7 @@ const UpdateProductPage = (props: IProps) => {
                   filterOption={(input, option) =>
                     (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                   }
-                  options={[
-                    {
-                      value: '1',
-                      label: 'Sản phẩm sách',
-                    },
-                    {
-                      value: '2',
-                      label: 'Sản phẩm công nghệ',
-                    }
-                  ]}
+                  options={data}
                 />
               </Form.Item>
             </Col>

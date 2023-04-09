@@ -13,19 +13,28 @@ import UpdateProduct from './page/admin/Products/UpdateProduct'
 import AddCategory from './page/admin/Category/AddCategory'
 import CategoryManagement from './page/admin/Category/CategoryManagement'
 import UpdateCategory from './page/admin/Category/UpdateCategory'
-import Users from './page/admin/Users/Users'
-import { ICategory, IProduct } from './interface/interface'
+import { ICategory, IProduct, IUser } from './interface/interface'
 import { addCategory, deleteCategory, getAllCategory, updateCategory } from './api/category'
+import UsersManagement from './page/admin/Users/UsersManagement'
+import { getAllUsers } from './api/users'
 
 
 function App() {
   const [products, setProducts] = useState<IProduct[]>([])
-
+  const [categories, setCategories] = useState<ICategory[]>([])
+  const [users, setUsers] = useState<IUser[]>([])
+  useEffect(() => {
+    getAllUsers().then(({ data }) => setUsers(data))
+    // console.log(users);
+  }, [])
   useEffect(() => {
     getAll().then(({ data }) => setProducts(data))
-    console.log(products);
+    // console.log(products);
   }, [])
-
+  useEffect(() => {
+    getAllCategory().then(({ data }) => setCategories(data))
+    // console.log(categories);
+  }, [])
   const onHandleRemove = (id: number) => {
     deleteProduct(id).then(() => {
       setProducts(products.filter((item: IProduct) => item.id !== id))
@@ -39,13 +48,6 @@ function App() {
   const onHandleUpdate = (product: IProduct) => {
     updateProduct(product).then(() => getAll().then(({ data }) => setProducts(data)))
   }
-
-  const [categories, setCategories] = useState<ICategory[]>([])
-
-  useEffect(() => {
-    getAllCategory().then(({ data }) => setCategories(data))
-    console.log(categories);
-  }, [])
 
   const HandleRemove = (idCate: number) => {
     deleteCategory(idCate).then(() => {
@@ -67,7 +69,7 @@ function App() {
           <Route index element={< HomePage />} />
           <Route path='products'>
             <Route index element={< ProductsPage products={products} />} />
-            <Route path=':id' element={< ProductDetail products={products} />} />
+            <Route path=':id' element={< ProductDetail products={products} categories={categories} />} />
           </Route>
         </Route>
 
@@ -77,7 +79,7 @@ function App() {
           <Route path='addProduct' element={< AddProduct categories={categories} onAdd={onHandleAdd} />} />
           <Route path='products'>
             <Route index element={<ProductsManagement products={products} onRemove={onHandleRemove} />} />
-            <Route path=':id/update' element={<UpdateProduct products={products} onUpdate={onHandleUpdate} />} />
+            <Route path=':id/update' element={<UpdateProduct products={products} onUpdate={onHandleUpdate} categories={categories} />} />
           </Route>
 
           <Route path='addCategories' element={<AddCategory onAdd={HandleAdd} />} />
@@ -86,7 +88,7 @@ function App() {
             <Route path=':id/update' element={<UpdateCategory categories={categories} onUpdate={HandleUpdate} />} />
           </Route>
 
-          <Route path='users' element={<Users />} />
+          <Route path='users' element={<UsersManagement users={users} />} />
 
         </Route>
       </Routes>

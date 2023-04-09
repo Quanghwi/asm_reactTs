@@ -32,10 +32,6 @@ const ProductsManagement = (props: IProps) => {
       idCate: item.idCate
     }
   })
-  // console.log(data);
-  
-
-
   const columns: ColumnsType<DataType> = [
     {
       title: 'STT',
@@ -72,7 +68,7 @@ const ProductsManagement = (props: IProps) => {
   ];
 
   return (
-    <Table columns={columns} dataSource={data} pagination={{ pageSize: 10 }} />
+    <Table columns={columns} dataSource={data} pagination={{ pageSize: 7 }} />
   )
 }
 

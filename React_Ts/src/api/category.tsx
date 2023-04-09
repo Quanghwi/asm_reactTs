@@ -14,7 +14,7 @@ const deleteCategory = (id: number) => {
     return instance.delete('/categories/' + id)
 }
 const updateCategory = (category: ICategory) => {
-    return instance.put('/categories/' + category.id, category)
+    return instance.patch('/categories/' + category.id, category)
 }
 
 export { getAllCategory, getOneCategory, addCategory, deleteCategory, updateCategory }
